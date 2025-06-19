@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
-            $table->id()->comment('Primary key of the student');
-            $table->string('course')->comment('Student\'s enrolled course');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('role_name', 30)->comment('Name of the role (e.g., Student, Teacher, Admin)');
+            $table->string('description', 255)->nullable()->comment('Short description of the role');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('roles');
     }
 };
